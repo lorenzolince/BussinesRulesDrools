@@ -1,0 +1,15 @@
+package rules
+ 
+import com.llh.drools.model.Product
+rule "Price for Ajax"
+	when 
+		productObject: Product(type=="Ajax")
+	then
+		productObject.setPrice(25);
+	end
+rule "Price for Sip"
+	when 
+		productObject: Product(type=="Sip")
+	then
+		productObject.setPrice(45);
+	end

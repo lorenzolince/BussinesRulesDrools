@@ -1,0 +1,27 @@
+package rules
+ 
+import com.llh.drools.model.Client
+import java.util.Map
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+global java.util.Map parameter; 
+
+rule "test 1"
+	when 
+		ClientObject: Client(code==1)
+		
+	then
+		ClientObject.setName((String) parameter.get("value1"));
+		System.out.println("Hi, "+ClientObject.getName()+"  how are you");
+		parameter.put("value2", "Hi 1");
+		parameter.put("value3", "Hi 2");
+	end
+rule "test 2"
+	when 
+	    
+		ClientObject: Client(code==2)
+		
+	then
+		ClientObject.setName("OTHERS");
+		ClientObject.insertData("OTHERS Data");
+	end
